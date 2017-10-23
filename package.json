@@ -10,11 +10,8 @@
     "compile:rust:native": "cargo b --manifest-path native/estimate_pi/Cargo.toml",
     "compile:rust:native:release": "npm run compile:rust:native -- --release",
 
-    "compile:rust:asmjs": "npm run compile:rust:native -- --target=asmjs-unknown-emscripten",
+    "compile:rust:asmjs": "cd native/pi_est_browser/ && cargo b --target=asmjs-unknown-emscripten",
     "compile:rust:asmjs:release": "npm run compile:rust:asmjs -- --release",
-
-    "compile:rust:wasm": "npm run compile:rust:native -- --target=wasm32-unknown-emscripten",
-    "compile:rust:wasm:release": "npm run compile:rust:wasm -- --release",
 
     "compile:coffeescript": "coffee -b --no-header -o target/ -c src/",
 
