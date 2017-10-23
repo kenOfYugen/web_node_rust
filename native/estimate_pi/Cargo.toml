@@ -1,0 +1,10 @@
+[package]
+name = "estimate_pi"
+version = "0.1.0"
+authors = ["kenOfYugen <kenzone@gmail.com>"]
+
+[dependencies]
+rayon = "*"
+
+[dependencies.prng]
+path = "../prng"
