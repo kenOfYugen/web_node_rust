@@ -67,8 +67,8 @@ mod estimate_tests {
   }
 }
 
-#[cfg(test)]
 #[cfg(not(target_os = "emscripten"))]
+#[cfg(test)]
 mod work_stealing_estimation {
   use ws::estimate;
   #[test]
