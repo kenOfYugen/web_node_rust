@@ -3,7 +3,7 @@ name = "estimate_pi"
 version = "0.1.0"
 authors = ["kenOfYugen <kenzone@gmail.com>"]
 
-[dependencies]
+[target.'cfg(not(target_os = "emscripten"))'.dependencies]
 rayon = "*"
 
 [dependencies.prng]
