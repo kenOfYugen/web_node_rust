@@ -37,5 +37,6 @@
     "envify": "^4.1.0",
     "node-gyp": "^3.6.2",
     "pug-cli": "^1.0.0-alpha6"
-  }
+  },
+  "dependencies": {}
 }

@@ -1,35 +1,15 @@
-PRNG = (seed) ->
-  @seed = seed % 2147483647
-  if @seed <= 0 then @seed += 2147483646
+assert = require 'assert'
+pi_est_js = require './pi_est_js'
+pi_est_asmjs = require './pi_est_asmjs'
 
-  ###
-   * Returns a pseudo-random value between 1 and 2^32 - 2.
-  ###
+if process.env.NODE_ENV is 'node_debug'
+  assert (pi_est_js 1e5) is 3.13852
+  assert (pi_est_asmjs 1e5) is 3.13852
 
-  @next = -> @seed = @seed * 16807 % 2147483647
+console.time 'js'
+pi_est_js 1e7
+console.timeEnd 'js'
 
-  ###
-   * Returns a pseudo-random floating point number in range [0, 1).
-  ###
-
-  @nextFloat = ->
-    # We know that result of next() will be 1 to 2147483646 (inclusive).
-    (@next() - 1) / 2147483646 #* (max - min) + min
-
-  return
-
-estimatePi = (points) ->
-  inside = 0
-  randseed = 1
-
-  generator = new PRNG randseed
-
-  for i in [0...points]
-    x = generator.nextFloat()
-    y = generator.nextFloat()
-
-    inside += 1 if (x * x) + (y * y) <= 1
-
-  inside / points * 4
-
-module.exports = estimatePi
+console.time 'asmjs'
+pi_est_asmjs 1e7
+console.timeEnd 'asmjs'
