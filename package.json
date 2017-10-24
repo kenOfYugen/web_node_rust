@@ -12,9 +12,16 @@
     "compile:rust:asmjs:release": "npm run compile:rust:asmjs -- --release",
     "compile:rust:wasm": "cd native/pi_est_browser/ && cargo b --target=wasm32-unknown-emscripten",
     "compile:rust:wasm:release": "npm run compile:rust:wasm -- --release",
+    "precompile:pug": "mkdir -p target/web/",
     "compile:pug": "pug -P --out target/web/ src/web/",
-    "compile:coffeescript:node": "coffee -b --no-header -o target/node/ -c src/",
-    "compile:coffeescript:web": "browserify --debug -t coffeeify --extension=\".coffee\" src/index.coffee > target/web/bundle.js",
+
+    "precompile:coffeescript": "mkdir -p target/web/ target/node/",
+    "compile:coffeescript": "browserify -t coffeeify --extension=\".coffee\" src/index.coffee",
+    "compile:coffeescript:web": "npm run compile:coffeescript -- -t [ envify --NODE_ENV browser_debug ] -o target/web/bundle.js",
+    "compile:coffeescript:web:debug": "npm run compile:coffeescript:web -- --debug",
+
+    "compile:coffeescript:node": "npm run compile:coffeescript -- -t [ envify --NODE_ENV node_debug ] -o target/node/bundle.js",
+    "compile:coffeescript:node:debug": "npm run compile:coffeescript:node -- --debug",
     "clean": "rm -rf node_modules/ target/ build/"
   },
   "keywords": [],
@@ -25,6 +32,7 @@
     "browserify": "^14.5.0",
     "coffeeify": "^3.0.0",
     "coffeescript": "^2.0.1",
+    "envify": "^4.1.0",
     "node-gyp": "^3.6.2",
     "pug-cli": "^1.0.0-alpha6"
   }
