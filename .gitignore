@@ -1,5 +1,5 @@
 node_modules
 target
 build
-native/pi_est_asmjs
-native/pi_est_wasm
+src/**/*.js
+src/**/*.wasm
