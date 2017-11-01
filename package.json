@@ -23,7 +23,8 @@
     "compile:coffeescript:web:debug": "npm run compile:coffeescript:web -- --debug",
     "compile:coffeescript:node": "npm run compile:coffeescript -- -t [ coffeeify --bare true --header false ] -t [ envify --NODE_ENV node_debug ] -o target/node/bundle.js",
     "compile:coffeescript:node:debug": "npm run compile:coffeescript:node -- --debug",
-    "clean": "git clean -xdfn; read -n1 -r -p \"\npress ctrl+c to stop\" key; git clean -xdf; printf \"\ndone!\n\""
+    "clean": "git clean -xdfn; read -n1 -r -p \"\npress ctrl+c to stop\" key; git clean -xdf; printf \"\ndone!\n\"",
+    "compile-and-benchmark": "npm run compile:rust:asmjs:release; npm run compile:rust:wasm:release; npm run bench"
   },
   "keywords": [],
   "author": "",
