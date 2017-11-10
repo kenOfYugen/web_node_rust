@@ -1,6 +1,6 @@
 {
   "name": "webrust",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -15,15 +15,13 @@
     "compile:rust:wasm": "cd native/pi_est_browser/; cargo b --target=wasm32-unknown-emscripten",
     "compile:rust:wasm:release": "npm run compile:rust:wasm -- --release",
     "postcompile:rust:wasm:release": "echo src/pi_est_wasm/ ./ | xargs -n 1 cp native/pi_est_browser/target/wasm32-unknown-emscripten/release/pi_est_browser.*",
-    "precompile:pug": "mkdir -p target/web/",
-    "compile:pug": "pug -P --out target/web/ src/web/",
-    "precompile:coffeescript": "mkdir -p target/web/ target/node/",
-    "compile:coffeescript": "browserify --extension=\".coffee\" src/index.coffee",
-    "compile:coffeescript:web": "npm run compile:coffeescript -- -t [ coffeeify --bare false --header false ] -t [ envify --NODE_ENV browser_debug ] -o target/web/bundle.js",
-    "compile:coffeescript:web:debug": "npm run compile:coffeescript:web -- --debug",
-    "compile:coffeescript:node": "npm run compile:coffeescript -- -t [ coffeeify --bare true --header false ] -t [ envify --NODE_ENV node_debug ] -o target/node/bundle.js",
-    "compile:coffeescript:node:debug": "npm run compile:coffeescript:node -- --debug",
+    "precompile:coffeescript": "mkdir -p target/web/",
+    "compile:coffeescript": "browserify --extension=\".coffee\"  -t [ coffeeify --bare false --header false ] -o target/bundle.js src/index.coffee",
+    "compile:coffeescript:release": "npm run compile:coffeescript -- -t [ envify --NODE_ENV production ] && uglifyjs --compress -o target/bundle.js -- target/bundle.js",
+    "compile:coffeescript:development": "npm run compile:coffeescript -- -t [ envify --NODE_ENV development ] --debug",
     "clean": "git clean -xdfn; read -n1 -r -p \"\npress ctrl+c to stop\" key; git clean -xdf; printf \"\ndone!\n\"",
+    "compile:web:development": "pug -P --out target/web/ src/web/ & npm run compile:coffeescript:development",
+    "compile:web:release": "pug --out target/web/ src/web/ & npm run compile:coffeescript:release",
     "compile-and-benchmark": "npm run compile:rust:asmjs:release; npm run compile:rust:wasm:release; npm run bench"
   },
   "keywords": [],
@@ -40,7 +38,8 @@
     "pug-cli": "^1.0.0-alpha6",
     "tap-spec": "^4.1.1",
     "tape": "^4.8.0",
-    "tcomb": "^3.2.24"
+    "tcomb": "^3.2.24",
+    "uglify-es": "^3.1.8"
   },
   "dependencies": {}
 }
