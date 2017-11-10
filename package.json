@@ -19,10 +19,10 @@
     "compile:coffeescript": "browserify --extension=\".coffee\"  -t [ coffeeify --bare false --header false ] -o target/bundle.js src/index.coffee",
     "compile:coffeescript:release": "npm run compile:coffeescript -- -t [ envify --NODE_ENV production ] && uglifyjs --compress -o target/bundle.js -- target/bundle.js",
     "compile:coffeescript:development": "npm run compile:coffeescript -- -t [ envify --NODE_ENV development ] --debug",
-    "clean": "git clean -xdfn; read -n1 -r -p \"\npress ctrl+c to stop\" key; git clean -xdf; printf \"\ndone!\n\"",
     "compile:web:development": "pug -P --out target/web/ src/web/ & npm run compile:coffeescript:development",
     "compile:web:release": "pug --out target/web/ src/web/ & npm run compile:coffeescript:release",
-    "compile-and-benchmark": "npm run compile:rust:asmjs:release; npm run compile:rust:wasm:release; npm run bench"
+    "compile-and-benchmark": "npm run compile:rust:asmjs:release; npm run compile:rust:wasm:release; npm run bench",
+    "clean": "git clean -xdfn; read -n1 -r -p \"\npress ctrl+c to stop\" key; git clean -xdf; printf \"\ndone!\n\""
   },
   "keywords": [],
   "author": "",
