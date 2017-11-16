@@ -1,9 +1,9 @@
 [target.asmjs-unknown-emscripten]
 rustflags = [
-    "-Clink-args=-s EXPORTED_FUNCTIONS=['_pi_est'] -s MODULARIZE=1 -s EXPORT_NAME='AsmjsModuleInitializer' -s BINARYEN_ASYNC_COMPILATION=0"
+    "-Clink-args=-s EXPORTED_FUNCTIONS=['_pi_est'] -s MODULARIZE=1 -s EXPORT_NAME='AsmjsModuleInitializer'"
 ]
 
 [target.wasm32-unknown-emscripten]
 rustflags = [
-    "-Clink-args=-s EXPORTED_FUNCTIONS=['_pi_est'] -s MODULARIZE=1 -s EXPORT_NAME='WasmModuleInitializer' -s BINARYEN_ASYNC_COMPILATION=0"
+    "-Clink-args=-s EXPORTED_FUNCTIONS=['_pi_est'] -s MODULARIZE=1 -s EXPORT_NAME='WasmModuleInitializer' -s SINGLE_FILE=1 -s BINARYEN_ASYNC_COMPILATION=0"
 ]
