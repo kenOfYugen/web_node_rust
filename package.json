@@ -14,7 +14,7 @@
     "postcompile:rust:asmjs:release": "cp native/pi_est_node/target/asmjs-unknown-emscripten/release/pi_est_node.js src/pi_est_asmjs/pi_est_node.asm.js",
     "compile:rust:wasm": "cd native/pi_est_node/; cargo b --target=wasm32-unknown-emscripten",
     "compile:rust:wasm:release": "npm run compile:rust:wasm -- --release",
-    "postcompile:rust:wasm:release": "echo src/pi_est_wasm/ ./ | xargs -n 1 cp native/pi_est_node/target/wasm32-unknown-emscripten/release/pi_est_node.*",
+    "postcompile:rust:wasm:release": "cp native/pi_est_node/target/wasm32-unknown-emscripten/release/pi_est_node.* src/pi_est_wasm/",
     "precompile:coffeescript": "mkdir -p target/web/",
     "compile:coffeescript": "browserify --extension=\".coffee\"  -t [ coffeeify --bare false --header false ] -o target/bundle.js src/index.coffee",
     "compile:coffeescript:release": "npm run compile:coffeescript -- -t [ envify --NODE_ENV production ] && uglifyjs --compress -o target/bundle.js -- target/bundle.js",
