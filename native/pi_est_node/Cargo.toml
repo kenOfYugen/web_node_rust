@@ -1,5 +1,5 @@
 [package]
-name = "pi_est_browser"
+name = "pi_est_node"
 version = "0.1.0"
 authors = ["kenOfYugen <kenzone@gmail.com>"]
 

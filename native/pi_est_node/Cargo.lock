@@ -65,17 +65,17 @@ dependencies = [
 ]
 
 [[package]]
-name = "pi_est_browser"
-version = "0.1.0"
-dependencies = [
- "pi_est_c_wrapper 0.1.0",
-]
-
-[[package]]
 name = "pi_est_c_wrapper"
 version = "0.1.0"
 dependencies = [
  "estimate_pi 0.1.0",
+]
+
+[[package]]
+name = "pi_est_node"
+version = "0.1.0"
+dependencies = [
+ "pi_est_c_wrapper 0.1.0",
 ]
 
 [[package]]
