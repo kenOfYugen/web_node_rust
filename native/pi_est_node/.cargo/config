@@ -1,6 +1,6 @@
 [target.asmjs-unknown-emscripten]
 rustflags = [
-    "-Clink-args=-s EXPORTED_FUNCTIONS=['_pi_est'] -s MODULARIZE=1 -s ALLOW_MEMORY_GROWTH=1 -s EXPORT_NAME='AsmjsModuleInitializer'"
+    "-Clink-args=-s EXPORTED_FUNCTIONS=['_pi_est'] -s MODULARIZE=1 -s ALLOW_MEMORY_GROWTH=1 -s EXPORT_NAME='AsmjsModuleInitializer' -s SINGLE_FILE=1 -s BINARYEN_ASYNC_COMPILATION=0"
 ]
 
 [target.wasm32-unknown-emscripten]
