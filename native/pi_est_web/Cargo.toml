@@ -1,0 +1,9 @@
+[package]
+name = "pi_est_web"
+version = "0.1.0"
+authors = ["kenOfYugen <kenzone@gmail.com>"]
+
+[dependencies]
+
+[dependencies.pi_est_c_wrapper]
+path = "../pi_est_c_wrapper"
