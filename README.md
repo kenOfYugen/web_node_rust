@@ -1,4 +1,5 @@
-# web_node_rust [WIP]
+# web_node_rust [deprecated]
+### no longer relevant since rustc got the wasm32-unknown-unknown target
 
 Experimental compilation workflow for Node.js and the Browser.
 
